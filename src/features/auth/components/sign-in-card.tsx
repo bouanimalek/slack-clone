@@ -10,8 +10,12 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { SignFlow } from "../types";
 
-export const SignInCard = () => {
+interface SignInCardProps {
+  setState: (state: SignFlow) => void;
+}
+export const SignInCard = ({ setState }: SignInCardProps) => {
   return (
     <Card className="h-full w-full p-8">
       <CardHeader className="px-0 pt-0">
@@ -67,7 +71,10 @@ export const SignInCard = () => {
         </div>
         <p className="text-xs text-muted-foreground">
           Don&apos;t have an account?{" "}
-          <span className="text-sky-700 hover:underline cursor-pointer">
+          <span
+            className="text-sky-700 hover:underline cursor-pointer"
+            onClick={() => setState("signUp")}
+          >
             Sign up
           </span>
         </p>
